@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "732921339537",
+    "project_id": "dasi-e4fc2",
+    "storage_bucket": "dasi-e4fc2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732921339537:android:6c812e50bb27052a1f2930",
+        "android_client_info": {
+          "package_name": "com.project.dasi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732921339537-92l1nphicgs84e5fu3k2l95da4fqmcid.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqvYIdK6-a2dLJ1Y1kMdekUskGuwGv10M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732921339537-92l1nphicgs84e5fu3k2l95da4fqmcid.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

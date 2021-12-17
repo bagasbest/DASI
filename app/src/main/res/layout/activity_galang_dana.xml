@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background2"
+    tools:context=".galang_dana.GalangDanaActivity">
+
+
+    <View
+        android:id="@+id/view11"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/yellow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16sp"
+        android:contentDescription="@string/image"
+        app:layout_constraintBottom_toBottomOf="@+id/view11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pengajuan Donasi"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/view11"
+        app:layout_constraintTop_toTopOf="@+id/logo" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view11">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Donasi"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16sp"
+                android:textColor="@color/white"
+                android:textSize="16sp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16sp"
+                android:id="@+id/donationName"
+                android:layout_marginEnd="16sp"
+                android:background="@drawable/bg_rounded"
+                android:backgroundTint="@color/white" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Pengaju Donasi"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16sp"
+                android:textColor="@color/white"
+                android:textSize="16sp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16sp"
+                android:id="@+id/donateOwner"
+                android:layout_marginEnd="16sp"
+                android:background="@drawable/bg_rounded"
+                android:backgroundTint="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nominal"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16sp"
+                android:textColor="@color/white"
+                android:textSize="16sp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:inputType="number"
+                android:layout_marginStart="16sp"
+                android:id="@+id/nominal"
+                android:layout_marginEnd="16sp"
+                android:background="@drawable/bg_rounded"
+                android:backgroundTint="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tujuan Donasi"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16sp"
+                android:textColor="@color/white"
+                android:textSize="16sp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16sp"
+                android:id="@+id/donateTo"
+                android:layout_marginEnd="16sp"
+                android:background="@drawable/bg_rounded"
+                android:backgroundTint="@color/white" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gambar"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16sp"
+                android:textColor="@color/white"
+                android:textSize="16sp"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16sp"
+                android:layout_marginEnd="16sp"
+                android:layout_height="150dp">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:id="@+id/donateImage"
+                    android:background="@drawable/bg_rounded"
+                    android:backgroundTint="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageTemp"
+                    android:layout_width="80dp"
+                    android:contentDescription="@string/image"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_baseline_add_a_photo_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/donateImage"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilih Tanggal Mulai"
+                android:layout_marginTop="16sp"
+                android:layout_marginStart="16sp"
+                android:textColor="@color/white"
+                android:textSize="16sp"/>
+
+
+            <Button
+                android:id="@+id/dateStart"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="16sp"
+                android:layout_marginEnd="16sp"
+                android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+                android:backgroundTint="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilih Tanggal Selesai"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16sp"
+                android:textColor="@color/white"
+                android:textSize="16sp"/>
+
+
+            <Button
+                android:id="@+id/dateEnd"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="16sp"
+                android:layout_marginEnd="16sp"
+                android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+                android:backgroundTint="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deskripsi"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16sp"
+                android:textColor="@color/white"
+                android:textSize="16sp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:inputType="textMultiLine"
+                android:singleLine="false"
+                android:layout_marginStart="16sp"
+                android:id="@+id/donateDescription"
+                android:layout_marginEnd="16sp"
+                android:background="@drawable/bg_rounded"
+                android:backgroundTint="@color/white" />
+
+
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:text="Daftar"
+                android:id="@+id/registrationDonation"
+                android:layout_marginTop="30sp"
+                android:layout_gravity="center"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:layout_marginBottom="30sp"
+                android:backgroundTint="@color/yellow" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

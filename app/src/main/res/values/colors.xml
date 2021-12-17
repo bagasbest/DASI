@@ -10,4 +10,6 @@
     <color name="background">#5D5FEF</color>
     <color name="background2">#567DC2</color>
     <color name="yellow">#EBFF00</color>
+    <color name="yellow_young">#E8F455</color>
+    <color name="gray">#C4C4C4</color>
 </resources>
