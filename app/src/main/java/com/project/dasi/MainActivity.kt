@@ -32,6 +32,10 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        binding?.register?.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
+        }
+
     }
 
     private fun formValidation() {
@@ -47,7 +51,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         val mProgressDialog = ProgressDialog(this)
-
         mProgressDialog.setMessage("Mohon tunggu hingga proses selesai...")
         mProgressDialog.setCanceledOnTouchOutside(false)
         mProgressDialog.show()

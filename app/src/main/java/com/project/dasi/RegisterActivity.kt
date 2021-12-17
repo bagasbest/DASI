@@ -111,7 +111,10 @@ class RegisterActivity : AppCompatActivity() {
             .setTitle("Berhasil Daftar")
             .setMessage("Silahkan login")
             .setIcon(R.drawable.ic_baseline_check_circle_outline_24)
-            .setPositiveButton("OKE") { dialogInterface, _ -> dialogInterface.dismiss() }
+            .setPositiveButton("OKE") { dialogInterface, _ ->
+                dialogInterface.dismiss()
+                onBackPressed()
+            }
             .show()
     }
 

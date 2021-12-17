@@ -1,5 +1,6 @@
 package com.project.dasi.profile
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
@@ -28,7 +29,7 @@ class ProfileActivity : AppCompatActivity() {
 
 
         binding?.editBtn?.setOnClickListener {
-
+            startActivity(Intent(this, ProfileEditActivity::class.java))
         }
 
     }
