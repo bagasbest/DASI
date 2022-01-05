@@ -17,7 +17,7 @@ class DonasiPaymentSuccessActivity : AppCompatActivity() {
 
     private var binding: ActivityDonasiPaymentSuccessBinding? = null
 
-    @SuppressLint("SimpleDateFormat")
+    @SuppressLint("SimpleDateFormat", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDonasiPaymentSuccessBinding.inflate(layoutInflater)
@@ -34,7 +34,7 @@ class DonasiPaymentSuccessActivity : AppCompatActivity() {
         binding?.date?.setText(format)
         binding?.from?.setText(intent.getStringExtra(EXTRA_FROM))
         binding?.to?.setText(intent.getStringExtra(EXTRA_TO))
-        binding?.nominal?.setText(nominalCurrency.format(intent.getStringExtra(EXTRA_NOMINAL)?.toLong()))
+        binding?.nominal?.setText("Rp " + nominalCurrency.format(intent.getStringExtra(EXTRA_NOMINAL)?.toLong()))
 
         binding?.back?.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)

@@ -51,7 +51,7 @@
     <View
         android:id="@+id/view12"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="170dp"
         android:background="@color/yellow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -62,11 +62,12 @@
         android:id="@+id/dp"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:contentDescription="@string/image"
         android:layout_marginStart="16dp"
+        android:contentDescription="@string/image"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="@+id/view12"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view13" />
+        app:layout_constraintTop_toBottomOf="@+id/editBtn" />
 
     <TextView
         android:id="@+id/username"
@@ -77,6 +78,7 @@
         android:layout_marginTop="10dp"
         android:maxLines="1"
         android:text="username"
+        android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -146,7 +148,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16sp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="30dp"
         android:text="Sedang Berjalan"
         android:textColor="@color/white"
         android:textSize="16sp"
@@ -162,6 +164,30 @@
         tools:listitem="@layout/item_current_project"
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tidak Ada Project"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:visibility="gone"
+        android:textStyle="bold"
+        android:id="@+id/noData"
+        app:layout_constraintBottom_toBottomOf="@+id/currentProjectRv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/currentProjectRv" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/currentProjectRv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/currentProjectRv" />
 
     <TextView
         android:id="@+id/textView1920"

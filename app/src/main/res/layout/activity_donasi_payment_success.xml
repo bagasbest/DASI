@@ -75,8 +75,10 @@
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:id="@+id/from"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:paddingStart="20sp"
+            android:paddingEnd="20sp"
             android:background="@drawable/bg_rounded"
             android:backgroundTint="@color/gray" />
 
@@ -93,8 +95,10 @@
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:id="@+id/to"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:paddingStart="20sp"
+            android:paddingEnd="20sp"
             android:background="@drawable/bg_rounded"
             android:backgroundTint="@color/gray" />
 
@@ -111,8 +115,10 @@
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:id="@+id/date"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:paddingStart="20sp"
+            android:paddingEnd="20sp"
             android:background="@drawable/bg_rounded"
             android:backgroundTint="@color/gray" />
 
@@ -129,8 +135,10 @@
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:id="@+id/nominal"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:paddingStart="20sp"
+            android:paddingEnd="20sp"
             android:background="@drawable/bg_rounded"
             android:backgroundTint="@color/gray" />
 

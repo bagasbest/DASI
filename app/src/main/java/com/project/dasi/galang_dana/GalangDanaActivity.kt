@@ -149,7 +149,13 @@ class GalangDanaActivity : AppCompatActivity() {
                 Toast.makeText(this, "Gambar donasi tidak boleh kosong", Toast.LENGTH_SHORT).show()
                 return
             }
+            dateStartInMillis!! >= dateEndInMillis!! -> {
+                Toast.makeText(this, "Waktu mulai tidak boleh melewati waktu selesai, dan minimal waktu donasi adalah 1 Hari", Toast.LENGTH_SHORT).show()
+                return
+            }
         }
+
+
 
         val mProgressDialog = ProgressDialog(this)
         mProgressDialog.setMessage("Mohon tunggu hingga proses selesai...")

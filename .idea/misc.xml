@@ -7,6 +7,7 @@
         <entry key="..\:/TUBES_GALERI/DASI/app/src/main/res/drawable/bg_rounded.xml" value="0.2526041666666667" />
         <entry key="..\:/TUBES_GALERI/DASI/app/src/main/res/drawable/bg_rounded2.xml" value="0.2526041666666667" />
         <entry key="..\:/TUBES_GALERI/DASI/app/src/main/res/drawable/bg_rounded3.xml" value="0.2526041666666667" />
+        <entry key="..\:/TUBES_GALERI/DASI/app/src/main/res/drawable/ic_baseline_face_24.xml" value="0.24512820512820513" />
         <entry key="..\:/TUBES_GALERI/DASI/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.1574074074074074" />
         <entry key="..\:/TUBES_GALERI/DASI/app/src/main/res/drawable/ic_donate.xml" value="0.1" />
         <entry key="..\:/TUBES_GALERI/DASI/app/src/main/res/layout/activity_donasi.xml" value="0.2" />
@@ -14,7 +15,7 @@
         <entry key="..\:/TUBES_GALERI/DASI/app/src/main/res/layout/activity_donasi_payment_input.xml" value="0.2" />
         <entry key="..\:/TUBES_GALERI/DASI/app/src/main/res/layout/activity_donasi_payment_success.xml" value="0.264" />
         <entry key="..\:/TUBES_GALERI/DASI/app/src/main/res/layout/activity_galang_dana.xml" value="0.264" />
-        <entry key="..\:/TUBES_GALERI/DASI/app/src/main/res/layout/activity_home.xml" value="0.4" />
+        <entry key="..\:/TUBES_GALERI/DASI/app/src/main/res/layout/activity_home.xml" value="0.264" />
         <entry key="..\:/TUBES_GALERI/DASI/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/TUBES_GALERI/DASI/app/src/main/res/layout/activity_profile.xml" value="0.264" />
         <entry key="..\:/TUBES_GALERI/DASI/app/src/main/res/layout/activity_profile_edit.xml" value="0.264" />

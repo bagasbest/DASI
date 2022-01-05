@@ -55,9 +55,10 @@
 
     <View
         android:id="@+id/view9"
-        android:layout_width="100dp"
+        android:layout_width="0dp"
         android:layout_height="3dp"
         android:layout_marginStart="5dp"
+        app:layout_constraintWidth_percent="0.0"
         android:layout_marginTop="4dp"
         android:background="@color/background2"
         app:layout_constraintStart_toStartOf="parent"

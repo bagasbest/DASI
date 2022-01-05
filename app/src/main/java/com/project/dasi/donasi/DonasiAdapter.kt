@@ -4,9 +4,12 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.project.dasi.databinding.ItemDonateBinding
+import java.text.DecimalFormat
+import java.text.NumberFormat
 
 class DonasiAdapter : RecyclerView.Adapter<DonasiAdapter.ViewHolder>() {
 
@@ -34,19 +37,41 @@ class DonasiAdapter : RecyclerView.Adapter<DonasiAdapter.ViewHolder>() {
         fun bind(model: DonasiModel) {
             with(binding) {
                 val currentTimeInMillis = System.currentTimeMillis()
+                val formatter: NumberFormat = DecimalFormat("#,###")
 
                 Glide.with(itemView.context)
                     .load(model.image)
                     .into(binding.roundedImageView)
 
                 textView12.text = model.name
-                donateValue.text = model.donateValue.toString()
+                donateValue.text = "Rp ${formatter.format(model.donateValue)}"
+
+
+                val donateValuePercentage = model.nominal?.toDouble()
+                    ?.let { model.donateValue?.toDouble()?.div(it) }
+
+                if (donateValuePercentage != null) {
+                    if(donateValuePercentage < 0.95) {
+                        (binding.view9.layoutParams as ConstraintLayout.LayoutParams)
+                            .matchConstraintPercentWidth = donateValuePercentage.toFloat()
+                        binding.view9.requestLayout()
+                    } else {
+                        (binding.view9.layoutParams as ConstraintLayout.LayoutParams)
+                            .matchConstraintPercentWidth = 0.95F
+                        binding.view9.requestLayout()
+                    }
+                }
 
                 if(currentTimeInMillis < model.dateEnd!!) {
                     val donationTimeLeftInMillis = model.dateEnd!! - currentTimeInMillis
-                    val donationTimeLeft = (donationTimeLeftInMillis / (1000*60*60)) % 24
+                    val donationTimeLeft = (donationTimeLeftInMillis / (1000*60*60*24)) % 24
 
-                    donateDayLeft.text = "$donationTimeLeft Hari Lagi"
+                    if(donationTimeLeft == 0L) {
+                        donateDayLeft.text = "Hari Terakhir Donasi"
+                    } else {
+                        donateDayLeft.text = "$donationTimeLeft Hari Lagi"
+                    }
+
                 } else {
                     donateDayLeft.text = "Waktu Habis"
                 }

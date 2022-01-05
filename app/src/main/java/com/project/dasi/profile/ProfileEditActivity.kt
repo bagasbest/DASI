@@ -33,6 +33,15 @@ class ProfileEditActivity : AppCompatActivity() {
             .into(binding!!.logo)
 
 
+        if(intent.getStringExtra(EXTRA_DP) != ""){
+            Glide.with(this)
+                .load(intent.getStringExtra(EXTRA_DP))
+                .into(binding!!.donateImage)
+        }
+
+        binding?.username?.setText(intent.getStringExtra(EXTRA_USERNAME))
+        binding?.address?.setText(intent.getStringExtra(EXTRA_ADDRESS))
+
         binding?.logo?.setOnClickListener {
             onBackPressed()
         }
@@ -65,10 +74,6 @@ class ProfileEditActivity : AppCompatActivity() {
                 Toast.makeText(this, "Alamat atau Lokasi tidak boleh kosong", Toast.LENGTH_SHORT).show()
                 return
             }
-            dp == null -> {
-                Toast.makeText(this, "Foto Profil tidak boleh kosong", Toast.LENGTH_SHORT).show()
-                return
-            }
         }
 
         val mProgressDialog = ProgressDialog(this)
@@ -78,27 +83,49 @@ class ProfileEditActivity : AppCompatActivity() {
 
 
         val myUid = FirebaseAuth.getInstance().currentUser?.uid
-        val data = mapOf(
-            "username" to username,
-            "address" to address,
-            "dp" to dp,
-        )
-
-        if (myUid != null) {
-            FirebaseFirestore
-                .getInstance()
-                .collection("users")
-                .document(myUid)
-                .update(data)
-                .addOnCompleteListener {
-                    if(it.isSuccessful) {
-                        mProgressDialog.dismiss()
-                        showSuccessDialog()
-                    } else {
-                        mProgressDialog.dismiss()
-                        showFailureDialog()
+        if(dp == null) {
+            val data = mapOf(
+                "username" to username,
+                "address" to address,
+            )
+            if (myUid != null) {
+                FirebaseFirestore
+                    .getInstance()
+                    .collection("users")
+                    .document(myUid)
+                    .update(data)
+                    .addOnCompleteListener {
+                        if(it.isSuccessful) {
+                            mProgressDialog.dismiss()
+                            showSuccessDialog()
+                        } else {
+                            mProgressDialog.dismiss()
+                            showFailureDialog()
+                        }
                     }
-                }
+            }
+        } else {
+            val data = mapOf(
+                "username" to username,
+                "address" to address,
+                "dp" to dp,
+            )
+            if (myUid != null) {
+                FirebaseFirestore
+                    .getInstance()
+                    .collection("users")
+                    .document(myUid)
+                    .update(data)
+                    .addOnCompleteListener {
+                        if(it.isSuccessful) {
+                            mProgressDialog.dismiss()
+                            showSuccessDialog()
+                        } else {
+                            mProgressDialog.dismiss()
+                            showFailureDialog()
+                        }
+                    }
+            }
         }
 
     }
@@ -183,5 +210,11 @@ class ProfileEditActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         binding = null
+    }
+
+    companion object {
+        const val EXTRA_USERNAME = "username"
+        const val EXTRA_DP = "dp"
+        const val EXTRA_ADDRESS = "address"
     }
 }

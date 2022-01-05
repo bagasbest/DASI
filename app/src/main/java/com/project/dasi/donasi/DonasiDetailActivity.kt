@@ -4,13 +4,19 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.project.dasi.R
 import com.project.dasi.databinding.ActivityDonasiDetailBinding
 import java.text.DecimalFormat
 import java.text.NumberFormat
+import androidx.constraintlayout.widget.ConstraintSet
+
+
+
 
 class DonasiDetailActivity : AppCompatActivity() {
 
@@ -26,7 +32,6 @@ class DonasiDetailActivity : AppCompatActivity() {
         setContentView(binding?.root)
 
         val formatter: NumberFormat = DecimalFormat("#,###")
-        val myUid = FirebaseAuth.getInstance().currentUser?.uid
         data = intent.getParcelableExtra<DonasiModel>(EXTRA_DONASI) as DonasiModel
 
         Glide.with(this)
@@ -40,24 +45,43 @@ class DonasiDetailActivity : AppCompatActivity() {
 
         binding?.textView14?.text = data.name
         binding?.donateValue?.text = formatter.format(data.donateValue)
-        binding?.nominal?.text = formatter.format(data.nominal)
+        binding?.nominal?.text = " / ${formatter.format(data.nominal)}"
         binding?.owner?.text = data.owner
         binding?.to?.text = "Tujuan Donasi: ${data.to}"
-        binding?.to?.text = data.description
+        binding?.description?.text = data.description
+
+        val donateValuePercentage = data.nominal?.toDouble()
+            ?.let { data.donateValue?.toDouble()?.div(it) }
+
+        Log.e("TAG", donateValuePercentage.toString())
+
+        if (donateValuePercentage != null) {
+            if(donateValuePercentage < 0.92) {
+                (binding?.progrssDonate?.layoutParams as ConstraintLayout.LayoutParams)
+                    .matchConstraintPercentWidth = donateValuePercentage.toFloat()
+                binding?.progrssDonate!!.requestLayout()
+            } else {
+                (binding?.progrssDonate?.layoutParams as ConstraintLayout.LayoutParams)
+                    .matchConstraintPercentWidth = 0.92F
+                binding?.progrssDonate!!.requestLayout()
+            }
+        }
+
 
         val currentTimeInMillis = System.currentTimeMillis()
+
         if(currentTimeInMillis < data.dateEnd!!) {
             val donationTimeLeftInMillis = data.dateEnd!! - currentTimeInMillis
-            val donationTimeLeft = (donationTimeLeftInMillis / (1000*60*60)) % 24
+            val donationTimeLeft = (donationTimeLeftInMillis / (1000*60*60*24)) % 24
 
-            binding?.dayLeft?.text = "$donationTimeLeft Hari Lagi"
+            if(donationTimeLeft == 0L ){
+                binding?.dayLeft?.text = "Hari Terakhir Donasi"
+            } else {
+                binding?.dayLeft?.text = "$donationTimeLeft Hari Lagi"
+            }
         } else {
             binding?.dayLeft?.text = "Waktu Habis"
             binding?.donateBtn?.visibility = View.GONE
-        }
-
-        if(myUid == data.ownerId) {
-            binding?.deleteDonate?.visibility = View.VISIBLE
         }
 
         binding?.donateBtn?.setOnClickListener {

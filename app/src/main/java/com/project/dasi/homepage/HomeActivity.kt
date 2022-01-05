@@ -20,14 +20,16 @@ class HomeActivity : AppCompatActivity() {
     private var binding: ActivityHomeBinding? = null
     private var adapter: DonasiAdapter? = null
 
+    override fun onResume() {
+        super.onResume()
+        initRecyclerView()
+        initViewModel()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding?.root)
-
-        initRecyclerView()
-        initViewModel()
 
         Glide.with(this)
             .load(R.drawable.logodasi)
@@ -85,9 +87,9 @@ class HomeActivity : AppCompatActivity() {
 
     private fun initViewModel() {
         val viewModel = ViewModelProvider(this)[DonasiViewModel::class.java]
-
+        val timeNowInMillis = System.currentTimeMillis()
         binding?.progressBar?.visibility = View.VISIBLE
-        viewModel.setListDonate()
+        viewModel.setListDonateLimit(timeNowInMillis)
         viewModel.getDonateList().observe(this) { alarm ->
             if (alarm.size > 0) {
                 binding!!.noData.visibility = View.GONE

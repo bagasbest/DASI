@@ -27,6 +27,9 @@ class MainActivity : AppCompatActivity() {
             .load(R.drawable.logodasi)
             .into(binding!!.logo)
 
+        /// Dapat melakukan auto login jika sebelumnya pernah login
+        autoLogin()
+
         binding?.button?.setOnClickListener {
             formValidation()
         }
@@ -36,6 +39,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
 
+    }
+
+    private fun autoLogin() {
+        if(FirebaseAuth.getInstance().currentUser != null) {
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+        }
     }
 
     private fun formValidation() {
@@ -82,6 +92,7 @@ class MainActivity : AppCompatActivity() {
                                 /// jika terdapat di database dan email serta password sama, maka masuk ke homepage
                                 mProgressDialog.dismiss()
                                 startActivity(Intent(this, HomeActivity::class.java))
+                                finish()
                             } else {
                                 /// jika tidak terdapat di database dan email serta password, maka tidak bisa login
                                 mProgressDialog.dismiss()

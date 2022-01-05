@@ -17,7 +17,7 @@ class DonasiViewModel : ViewModel() {
 
 
         try {
-            FirebaseFirestore.getInstance().collection("alarm")
+            FirebaseFirestore.getInstance().collection("donation")
                 .get()
                 .addOnSuccessListener { documents ->
                     for (document in documents) {
@@ -27,6 +27,7 @@ class DonasiViewModel : ViewModel() {
                         model.dateStart = document.data["dateStart"] as Long?
                         model.dateEnd = document.data["dateEnd"] as Long?
                         model.description = document.data["description"].toString()
+                        model.to = document.data["to"].toString()
                         model.image = document.data["image"].toString()
                         model.owner = document.data["owner"].toString()
                         model.ownerId = document.data["ownerId"].toString()
@@ -45,8 +46,82 @@ class DonasiViewModel : ViewModel() {
         }
     }
 
+    fun setListDonateLimit(timeNowInMillis: Long) {
+        listItems.clear()
+
+
+        try {
+            FirebaseFirestore.getInstance().collection("donation")
+                .whereGreaterThan("dateEnd", timeNowInMillis)
+                .limit(5)
+                .get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents) {
+                        val model = DonasiModel()
+                        model.uid = document.data["uid"].toString()
+                        model.name = document.data["name"].toString()
+                        model.dateStart = document.data["dateStart"] as Long?
+                        model.dateEnd = document.data["dateEnd"] as Long?
+                        model.description = document.data["description"].toString()
+                        model.image = document.data["image"].toString()
+                        model.to = document.data["to"].toString()
+                        model.owner = document.data["owner"].toString()
+                        model.ownerId = document.data["ownerId"].toString()
+                        model.donateValue = document.data["donateValue"] as Long?
+                        model.nominal = document.data["nominal"] as Long?
+
+                        listItems.add(model)
+                    }
+                    donateList.postValue(listItems)
+                }
+                .addOnFailureListener { exception ->
+                    Log.w(TAG, "Error getting documents: ", exception)
+                }
+        } catch (error: Exception) {
+            error.printStackTrace()
+        }
+    }
+
+
+    fun setListDonateCurrentProject(timeNowInMillis: Long) {
+        listItems.clear()
+
+
+        try {
+            FirebaseFirestore.getInstance().collection("donation")
+                .whereGreaterThan("dateEnd", timeNowInMillis)
+                .get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents) {
+                        val model = DonasiModel()
+                        model.uid = document.data["uid"].toString()
+                        model.name = document.data["name"].toString()
+                        model.dateStart = document.data["dateStart"] as Long?
+                        model.dateEnd = document.data["dateEnd"] as Long?
+                        model.description = document.data["description"].toString()
+                        model.image = document.data["image"].toString()
+                        model.to = document.data["to"].toString()
+                        model.owner = document.data["owner"].toString()
+                        model.ownerId = document.data["ownerId"].toString()
+                        model.donateValue = document.data["donateValue"] as Long?
+                        model.nominal = document.data["nominal"] as Long?
+
+                        listItems.add(model)
+                    }
+                    donateList.postValue(listItems)
+                }
+                .addOnFailureListener { exception ->
+                    Log.w(TAG, "Error getting documents: ", exception)
+                }
+        } catch (error: Exception) {
+            error.printStackTrace()
+        }
+    }
+
+
     fun getDonateList() : LiveData<ArrayList<DonasiModel>> {
         return donateList
     }
+
 
 }
